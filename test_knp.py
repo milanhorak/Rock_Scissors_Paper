@@ -20,7 +20,9 @@ class TestKnp(unittest.TestCase):
         pass
 
     def test_determine_winner(self):
-        pass
+        self.assertTrue(knp.determine_winner(knp.Choice.Rock, knp.Choice.Scissors))
+        self.assertIsNone(knp.determine_winner(knp.Choice.Rock, knp.Choice.Rock))
+        self.assertFalse(knp.determine_winner(knp.Choice.Rock, knp.Choice.Paper))
 
     def test_main(self):
         pass
