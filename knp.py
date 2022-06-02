@@ -27,21 +27,27 @@ def get_computer_sel(choices_val: list[str]) -> Choice:
 def determine_winner(user_choice: Choice, computer_choice: Choice) -> bool | None:
     # combination of victories
     victories = {
-        Choice.Rock: Choice.Scissors,     # Rock beats scissors
-        Choice.Paper: Choice.Rock,        # Paper beats rock
-        Choice.Scissors: Choice.Paper     # Scissor beats paper
+        Choice.Rock: Choice.Scissors,  # Rock beats scissors
+        Choice.Paper: Choice.Rock,  # Paper beats rock
+        Choice.Scissors: Choice.Paper  # Scissor beats paper
     }
     # selection from dictionary , who you defeat
     defeats = victories[user_choice]
     if user_choice == computer_choice:
-        print(f"Both players selected {user_choice.name}. It's a tie!")
         return None
     elif computer_choice == defeats:
-        print(f"{user_choice.name} beats {computer_choice.name}! You win!")
         return True
     else:
-        print(f"{computer_choice.name} beats {user_choice.name}! You lose.")
         return False
+
+
+def print_winner(user_choice, computer_choice, winner):
+    if winner is None:
+        print(f"Both players selected {user_choice.name}. It's a tie!")
+    elif winner:
+        print(f"{user_choice.name} beats {computer_choice.name}! You win!")
+    elif not winner:
+        print(f"{computer_choice.name} beats {user_choice.name}! You lose.")
 
 
 def main():
@@ -75,6 +81,9 @@ def main():
 
         # get winner
         winner: bool | None = determine_winner(user_choice, computer_choice)
+
+        # print winner
+        print_winner(user_choice, computer_choice, winner)
 
         # update score
         if winner is None:
