@@ -24,9 +24,6 @@ class TestKnp(unittest.TestCase):
         self.assertIsNone(knp.determine_winner(knp.Choice.Rock, knp.Choice.Rock))
         self.assertFalse(knp.determine_winner(knp.Choice.Rock, knp.Choice.Paper))
 
-    def test_print_winner(self):
-        pass
-
     def test_main(self):
         pass
 
